@@ -1,5 +1,7 @@
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { usuarioStore } from "../store/auhtStore";
+import { Login } from "../sesion/sesion";
 import {
   Card,
   CardContent,
@@ -9,54 +11,90 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-export default function LoginForm({
-  className,
-  ...props
-}: React.ComponentPropsWithoutRef<"div">) {
+import { toast } from "sonner"
+import React from "react"
+import { useNavigate } from "@tanstack/react-router"
+
+
+type LoginFormProps = React.ComponentPropsWithoutRef<"div">
+
+export default function LoginForm({ className, ...props }: LoginFormProps) {
+  const loginMutation = Login()
+  const navigate = useNavigate()
+
+  const onFormSubmit = async (evt: React.FormEvent<HTMLFormElement>) => {
+    evt.preventDefault()
+    const formData = new FormData(evt.currentTarget)
+    const username = formData.get("email")?.toString() || ""
+    const password = formData.get("password")?.toString() || ""
+
+    if (!username || !password) {
+      toast.warning("Completa todos los campos", { position: "bottom-right" })
+      return
+    }
+
+    try {
+      await loginMutation.mutateAsync({ username, password })
+
+      console.log("🟢 Estado del store después del login:", usuarioStore.state)
+
+      if (usuarioStore.state.autenticado) {
+        toast.success("¡Inicio de sesión exitoso!", { position: "bottom-right" })
+        navigate({ to: "/home" })
+      } else {
+        toast.error("Usuario o contraseña incorrectos", { position: "bottom-right" })
+      }
+    } catch (error) {
+      toast.error(`Error: ${(error as Error).message}`, {
+        position: "bottom-right",
+      })
+    }
+  }
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account
+            Ingresa tu email y contraseña para iniciar sesión
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={onFormSubmit}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
+                 name="username"
+                  id="username"
+                  placeholder="usuario"
+  
                 />
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">Contraseña</Label>
                   <a
                     href="#"
                     className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                   >
-                    Forgot your password?
+                    ¿Olvidaste tu contraseña?
                   </a>
                 </div>
-                <Input id="password" type="password" required />
+                <Input id="password" name="password" type="password" required />
               </div>
               <Button type="submit" className="w-full">
-                Login
+                Iniciar sesión
               </Button>
-              <Button variant="outline" className="w-full">
-                Login with Google
+              <Button variant="outline" className="w-full" disabled>
+                Iniciar con Google (pendiente)
               </Button>
             </div>
             <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{" "}
+              ¿No tienes una cuenta?{" "}
               <a href="#" className="underline underline-offset-4">
-                Sign up
+                Regístrate
               </a>
             </div>
           </form>
