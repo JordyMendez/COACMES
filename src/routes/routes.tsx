@@ -39,64 +39,64 @@ const DasRouter = createRoute({
 })
 
 
-// const PokemonRoute = createRoute({
-//   getParentRoute: () => DasRouter,
-//   path: '/pokemon',
-//   component: lazy(() => import('../pages/Pokemon')),
-//   beforeLoad: () => {
-//     if (!usuarioStore.state.autenticado) throw redirect({ to: '/login' })
-//   },
-// })
+const PokemonRoute = createRoute({
+  getParentRoute: () => DasRouter,
+  path: '/pokemon',
+  component: lazy(() => import('../pages/pokemon')),
+  beforeLoad: () => {
+    if (!usuarioStore.state.autenticado) throw redirect({ to: '/login' })
+  },
+})
 
-// const ClimaRoute = createRoute({
-//   getParentRoute: () => DasRouter,
-//   path: '/clima',
-//   component: lazy(() => import('../pages/Clima')),
-//   beforeLoad: () => {
-//     if (!usuarioStore.state.autenticado) {
-//       throw redirect({
-//         to: '/login',
-//       })
-//     }
-//   },
-// })
+const ClimaRoute = createRoute({
+  getParentRoute: () => DasRouter,
+  path: '/clima',
+  component: lazy(() => import('../pages/clima')),
+  beforeLoad: () => {
+    if (!usuarioStore.state.autenticado) {
+      throw redirect({
+        to: '/login',
+      })
+    }
+  },
+})
 
-// const HomeRoute = createRoute({
-//   getParentRoute: () => DasRouter,
-//   path: '/home',
-//   component: lazy(() => import('../pages/home')),
-//   beforeLoad: () => {
-//     if (!usuarioStore.state.autenticado) {
-//       throw redirect({
-//         to: '/login',
-//       })
-//     }
-//   },
-// })
-// const ContraseñaRoute = createRoute({
-//   getParentRoute: () => DasRouter,
-//   path: '/ChangePassword',
-//   component: lazy(() => import('../pages/Contraseña')),
-//   beforeLoad: () => {
-//     if (!usuarioStore.state.autenticado) {
-//       throw redirect({
-//         to: '/login',
-//       })
-//     }
-//   },
-// })
-// const editRoute = createRoute({
-//   getParentRoute: () => DasRouter,
-//   path: '/EditUser',
-//   component: lazy(() => import('../pages/editUser')),
-//   beforeLoad: () => {
-//     if (!usuarioStore.state.autenticado) {
-//       throw redirect({
-//         to: '/login',
-//       })
-//     }
-//   },
-// })
+const HomeRoute = createRoute({
+  getParentRoute: () => DasRouter,
+  path: '/home',
+  component: lazy(() => import('../pages/home')),
+  beforeLoad: () => {
+    if (!usuarioStore.state.autenticado) {
+      throw redirect({
+        to: '/login',
+      })
+    }
+  },
+})
+const ContraseñaRoute = createRoute({
+  getParentRoute: () => DasRouter,
+  path: '/ChangePassword',
+  component: lazy(() => import('../pages/contraseña')),
+  beforeLoad: () => {
+    if (!usuarioStore.state.autenticado) {
+      throw redirect({
+        to: '/login',
+      })
+    }
+  },
+})
+const editRoute = createRoute({
+  getParentRoute: () => DasRouter,
+  path: '/EditUser',
+  component: lazy(() => import('../pages/edit')),
+  beforeLoad: () => {
+    if (!usuarioStore.state.autenticado) {
+      throw redirect({
+        to: '/login',
+      })
+    }
+  },
+})
 
 
 const NotFoundRoute = createRoute({
@@ -111,13 +111,13 @@ const NotFoundRoute = createRoute({
 const routeTree = RootRoute.addChildren([
   LoginRoute,
   RegisterRoute,
-//   PokemonRoute,
-//   ClimaRoute,
+  PokemonRoute,
+  ClimaRoute,
   DasRouter,
   NotFoundRoute,
-//   ContraseñaRoute,
-//   editRoute,
-//   HomeRoute
+  ContraseñaRoute,
+  editRoute,
+  HomeRoute
 ])
 
 export const router = createRouter({ routeTree })
