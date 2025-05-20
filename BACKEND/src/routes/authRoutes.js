@@ -1,16 +1,10 @@
 const express = require('express');
-const { register, login, changePassword } = require('../controllers/authController');
-const verifyToken = require('../middleware/verifyToken');
-
 const router = express.Router();
+const authController = require('../controllers/authController');
 
-// Ruta para registrar un usuario
-router.post('/register', register);
-
-// Ruta para iniciar sesión
-router.post('/login', login);
-
-router.post('/changePassword', verifyToken, changePassword);
-
+// Aquí debes llamar a cada función, no al objeto completo
+router.post('/register', authController.register);
+router.post('/login', authController.login);
+router.post('/change-password', authController.changePassword);
 
 module.exports = router;

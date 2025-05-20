@@ -25,7 +25,7 @@ export default function LoginForm({ className, ...props }: LoginFormProps) {
   const onFormSubmit = async (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault()
     const formData = new FormData(evt.currentTarget)
-    const username = formData.get("email")?.toString() || ""
+    const username = formData.get("username")?.toString() || ""
     const password = formData.get("password")?.toString() || ""
 
     if (!username || !password) {
@@ -57,7 +57,7 @@ export default function LoginForm({ className, ...props }: LoginFormProps) {
         <CardHeader>
           <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>
-            Ingresa tu email y contraseña para iniciar sesión
+            Ingresa tu contraseña y usuario para iniciar sesión
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -66,29 +66,23 @@ export default function LoginForm({ className, ...props }: LoginFormProps) {
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
-                 name="username"
+                  name="username"
                   id="username"
-                  placeholder="usuario"
+                  placeholder="Usuario"
   
                 />
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
                   <Label htmlFor="password">Contraseña</Label>
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    ¿Olvidaste tu contraseña?
-                  </a>
                 </div>
-                <Input id="password" name="password" type="password" required />
+                <Input id="password" 
+                name="password" 
+                type="password" 
+                placeholder="Contraseña"/>
               </div>
               <Button type="submit" className="w-full">
                 Iniciar sesión
-              </Button>
-              <Button variant="outline" className="w-full" disabled>
-                Iniciar con Google (pendiente)
               </Button>
             </div>
             <div className="mt-4 text-center text-sm">
