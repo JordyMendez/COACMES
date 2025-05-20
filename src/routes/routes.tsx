@@ -73,6 +73,7 @@ const HomeRoute = createRoute({
     }
   },
 })
+
 const ContraseñaRoute = createRoute({
   getParentRoute: () => DasRouter,
   path: '/ChangePassword',
@@ -119,16 +120,6 @@ const routeTree = RootRoute.addChildren([
   editRoute,
   HomeRoute
 ])
-export {
-  HomeRoute,
-  ClimaRoute,
-  PokemonRoute,
-  ContraseñaRoute,
-  DasRouter, // si lo necesitas
-  LoginRoute,
-  RegisterRoute,
-  editRoute,
-} 
 export const router = createRouter({ routeTree })
 
 declare module '@tanstack/react-router' {
