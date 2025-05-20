@@ -76,7 +76,7 @@ const HomeRoute = createRoute({
 const ContraseñaRoute = createRoute({
   getParentRoute: () => DasRouter,
   path: '/ChangePassword',
-  component: lazy(() => import('../pages/contraseña')),
+  component: lazy(() => import('../pages/cambio-contraseña')),
   beforeLoad: () => {
     if (!usuarioStore.state.autenticado) {
       throw redirect({
@@ -119,7 +119,16 @@ const routeTree = RootRoute.addChildren([
   editRoute,
   HomeRoute
 ])
-
+export {
+  HomeRoute,
+  ClimaRoute,
+  PokemonRoute,
+  ContraseñaRoute,
+  DasRouter, // si lo necesitas
+  LoginRoute,
+  RegisterRoute,
+  editRoute,
+} 
 export const router = createRouter({ routeTree })
 
 declare module '@tanstack/react-router' {

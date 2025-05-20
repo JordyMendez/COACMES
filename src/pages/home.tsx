@@ -1,17 +1,21 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
-
+// components/SidebarLayout.tsx
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarProvider,
+  SidebarTrigger,
 } from "@/components/ui/sidebar"
 
-// Menu items.
+import {  Cat, ClipboardPenIcon, CloudSunRain, Home } from "lucide-react"
+import type { ReactNode } from "react"
+
 const items = [
   {
     title: "Home",
@@ -19,49 +23,54 @@ const items = [
     icon: Home,
   },
   {
-    title: "Inbox",
+    title: "Clima",
     url: "#",
-    icon: Inbox,
+    icon: CloudSunRain,
   },
   {
-    title: "Calendar",
+    title: "Pokemon",
     url: "#",
-    icon: Calendar,
+    icon: Cat,
   },
   {
-    title: "Search",
+    title: "Cambio de contraseña",
     url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
+    icon: ClipboardPenIcon,
   },
 ]
 
-export default function AppSidebar() {
+export default function SidebarLayout({ children }: { children: ReactNode }) {
   return (
-    <Sidebar>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-    </Sidebar>
+    <SidebarProvider>
+      <div className="flex min-h-screen">
+        {/* Sidebar */}
+        <Sidebar>
+          <SidebarHeader />
+          <SidebarContent>
+            <SidebarGroup>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {items.map((item) => (
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton asChild>
+                        <a href={item.url} className="flex items-center gap-2">
+                          <item.icon className="mr-2" />
+                          <span>{item.title}</span>
+                        </a>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          </SidebarContent>
+          <SidebarFooter />
+        </Sidebar>
+        <main className="flex-1 p-4">
+          <SidebarTrigger />
+          {children}
+        </main>
+      </div>
+    </SidebarProvider>
   )
 }
