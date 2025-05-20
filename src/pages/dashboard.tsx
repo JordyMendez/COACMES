@@ -127,8 +127,8 @@ export default function Das() {
             </SidebarFooter>
           )}
         </Sidebar>
+          <Outlet />
 
-        <Outlet />
       </div>
     </SidebarProvider>
   )
