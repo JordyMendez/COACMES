@@ -7,6 +7,7 @@ import {
   redirect
 } from '@tanstack/react-router'
 import { lazy } from 'react'
+import Skeleton from '../pages/skeleton';
 
 const RootRoute = createRootRoute({
   component: () => <Outlet />,
@@ -52,6 +53,18 @@ const ClimaRoute = createRoute({
   getParentRoute: () => DasRouter,
   path: '/clima',
   component: lazy(() => import('../pages/clima')),
+  beforeLoad: () => {
+    if (!usuarioStore.state.autenticado) {
+      throw redirect({
+        to: '/login',
+      })
+    }
+  },
+})
+const SkeletonRoute = createRoute({
+  getParentRoute: () => DasRouter,
+  path: '/skeleton',
+  component: lazy(() => import('../pages/skeleton')),
   beforeLoad: () => {
     if (!usuarioStore.state.autenticado) {
       throw redirect({
@@ -118,7 +131,8 @@ const routeTree = RootRoute.addChildren([
   NotFoundRoute,
   ContraseñaRoute,
   editRoute,
-  HomeRoute
+  HomeRoute,
+  SkeletonRoute
 ])
 export const router = createRouter({ routeTree })
 

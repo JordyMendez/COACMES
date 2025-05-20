@@ -36,25 +36,33 @@ export default function ClimaPage() {
   }
 
   return (
-    <div className="flex-1 flex items-center justify-center min-h-screen px-100">
-      <div className="w-full max-w-md space-y-4">
-        <form onSubmit={handleSubmit} className="flex gap-2">
+    <div className="flex-1 flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-900 via-black to-gray-900 p-6 px-95">
+      <div className="w-full max-w-md space-y-6">
+        <form onSubmit={handleSubmit} className="flex gap-3">
           <Input
             placeholder="Escribe una ciudad"
             value={city}
             onChange={(e) => setCity(e.target.value)}
+            className="text-lg placeholder:text-lg text-amber-50"
           />
-          <Button type="submit" disabled={loadingCoords || loadingWeather}>
-            {loadingCoords || loadingWeather ? (
-              <Loader2 className="animate-spin w-4 h-4" />
+          <Button
+            type="submit"
+            disabled={loadingCoords || loadingWeather}
+            className="flex items-center gap-2 disabled:cursor-wait disabled:bg-gray-600 transition"
+          >
+            {(loadingCoords || loadingWeather) ? (
+              <>
+                <Loader2 className="animate-spin w-6 h-6" />
+                <span className="sr-only">Buscando...</span>
+              </>
             ) : (
               "Buscar"
             )}
           </Button>
         </form>
 
-        {coordsError && <p className="text-red-500">Ciudad no encontrada</p>}
-        {weatherError && <p className="text-red-500">Error obteniendo clima</p>}
+        {coordsError && <p className="text-red-400 text-center">Ciudad no encontrada</p>}
+        {weatherError && <p className="text-red-400 text-center">Error obteniendo clima</p>}
 
         {location && weather && (
           <Card>
@@ -63,7 +71,7 @@ export default function ClimaPage() {
                 Clima en {location.name}, {location.country}
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-2 text-center">
+            <CardContent className="space-y-2 text-center text-lg">
               <p><strong>Temperatura:</strong> {weather.temperature}°C</p>
               <p><strong>Viento:</strong> {weather.windspeed} km/h</p>
               <p><strong>Código clima:</strong> {weather.weathercode}</p>
@@ -74,4 +82,3 @@ export default function ClimaPage() {
     </div>
   )
 }
-  

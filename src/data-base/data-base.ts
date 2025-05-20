@@ -1,24 +1,24 @@
-// export const registerUser = async (username: string, password: string) => {
-//   try {
-//     const response = await fetch(`${import.meta.env.VITE_DATABASE_URL}/register`, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({ username, password }),
-//     });
+export const registerUser = async (username: string, password: string) => {
+  try {
+    const response = await fetch('http://localhost:5000/api/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    });
 
-//     if (!response.ok) {
-//       const errorData = await response.json();
-//       throw new Error(errorData.message || 'Error al registrar usuario');
-//     }
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Error al registrar usuario');
+    }
 
-//     return await response.json();
-//   } catch (error) {
-//     console.error('Error en registerUser:', error);
-//     throw error;
-//   }
-// };
+    return await response.json();
+  } catch (error) {
+    console.error('Error en registerUser:', error);
+    throw error;
+  }
+};
 
 export const loginUser = async ({ username, password }: { username: string; password: string }) => {
   console.log('🟡 Enviando credenciales:', { username, password });
@@ -41,76 +41,75 @@ export const loginUser = async ({ username, password }: { username: string; pass
 };
 
 
+export const changePassword = async ({
+  username,
+  currentPassword,
+  newPassword,
+}: {
+  username: string;
+  currentPassword: string;
+  newPassword: string;
+}) => {
+  try {
+    const response = await fetch('http://localhost:5000/api/auth/cambio-contraseña', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, currentPassword, newPassword }),
+    });
 
-// export const changePassword = async ({
-//   username,
-//   currentPassword,
-//   newPassword,
-// }: {
-//   username: string;
-//   currentPassword: string;
-//   newPassword: string;
-// }) => {
-//   try {
-//     const response = await fetch(`${import.meta.env.VITE_DATABASE_URL}/changePassword`, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({ username, currentPassword, newPassword }),
-//     });
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Error al cambiar la contraseña');
+    }
 
-//     if (!response.ok) {
-//       const errorData = await response.json();
-//       throw new Error(errorData.message || 'Error al cambiar la contraseña');
-//     }
+    return await response.json();
+  } catch (error) {
+    console.error('Error en changePassword:', error);
+    throw error;
+  }
+};
 
-//     return await response.json();
-//   } catch (error) {
-//     console.error('Error en changePassword:', error);
-//     throw error;
-//   }
-// };
+export const editUserData = async ({
+  username,
+  currentPassword,
+  newNombre,
+  newApellido,
+  newProvincia,
+  newCanton,
+}: {
+  username: string
+  currentPassword: string
+  newNombre: string
+  newApellido: string
+  newProvincia: string
+  newCanton: string
+}) => {
+  try {
+    const response = await fetch('http://localhost:5000/api/auth/edit-user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        currentPassword,
+        newNombre,
+        newApellido,
+        newProvincia,
+        newCanton,
+      }),
+    })
 
-// export const editUserData = async ({
-//   username,
-//   currentPassword,
-//   newNombre,
-//   newApellido,
-//   newProvincia,
-//   newCanton,
-// }: {
-//   username: string
-//   currentPassword: string
-//   newNombre: string
-//   newApellido: string
-//   newProvincia: string
-//   newCanton: string
-// }) => {
-//   try {
-//     const response = await fetch(`${import.meta.env.VITE_DATABASE_URL}/edituser`, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({
-//         username,
-//         currentPassword,
-//         newNombre,
-//         newApellido,
-//         newProvincia,
-//         newCanton,
-//       }),
-//     })
+    if (!response.ok) {
+      const errorData = await response.json()
+      throw new Error(errorData.message || 'Error al editar datos del usuario')
+    }
 
-//     if (!response.ok) {
-//       const errorData = await response.json()
-//       throw new Error(errorData.message || 'Error al editar datos del usuario')
-//     }
-
-//     return await response.json()
-//   } catch (error) {
-//     console.error('Error en editUserData:', error)
-//     throw error
-//   }
-// }
+    return await response.json()
+  } catch (error) {
+    console.error('Error en editUserData:', error)
+    throw error
+  }
+}

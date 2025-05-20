@@ -19,6 +19,7 @@ import {
   Home,
   UserPen,
   LogOut,
+  Bone,
 } from "lucide-react"
 
 import { Link, Outlet } from "@tanstack/react-router"
@@ -46,9 +47,14 @@ const items = [
     icon: ClipboardPenIcon,
   },
   {
-    title: "Cambio de nombre de usuario",
+    title: "Cambio nombre de usuario",
     to: '/EditUser',
     icon: UserPen,
+  },
+  {
+    title: "Skeleton",
+    to: '/skeleton',
+    icon: Bone,
   },
 ]
 
@@ -96,7 +102,7 @@ export default function Das() {
                     {items.map((item) => (
                       <SidebarMenuItem key={item.title}>
                         <SidebarMenuButton asChild>
-                          <Link to={item.to} className="flex items-center gap-2">
+                          <Link to={item.to}>
                             <item.icon className="mr-2" />
                             <span>{item.title}</span>
                           </Link>

@@ -21,7 +21,7 @@ exports.register = async (req, res) => {
   }
 };
 
-// Inicio de sesión (mejorado)
+// Inicio de sesión
 exports.login = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -71,3 +71,27 @@ exports.changePassword = async (req, res) => {
   }
 };
 
+// Cambio de nombre de usuario
+exports.changeUsername = async (req, res) => {
+  try {
+    const { currentUsername, newUsername } = req.body;
+
+    const user = await User.findOne({ username: currentUsername });
+    if (!user) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+
+    // Verificar que el nuevo username no exista ya
+    const exists = await User.findOne({ username: newUsername });
+    if (exists) {
+      return res.status(400).json({ message: 'El nuevo nombre de usuario ya está en uso' });
+    }
+
+    user.username = newUsername;
+    await user.save();
+
+    res.status(200).json({ message: 'Nombre de usuario actualizado exitosamente' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error al cambiar el nombre de usuario', error });
+  }
+};
