@@ -89,7 +89,7 @@ const ContraseñaRoute = createRoute({
 const editRoute = createRoute({
   getParentRoute: () => DasRouter,
   path: '/EditUser',
-  component: lazy(() => import('../pages/edit')),
+  component: lazy(() => import('../pages/edit-user')),
   beforeLoad: () => {
     if (!usuarioStore.state.autenticado) {
       throw redirect({
