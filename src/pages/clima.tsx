@@ -5,7 +5,11 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Loader2 } from "lucide-react"
-
+import {
+  ThermometerSun,
+  Wind,
+  CloudSun,
+} from "lucide-react"
 export default function ClimaPage() {
   const [city, setCity] = useState("")
   const [search, setSearch] = useState("")
@@ -71,11 +75,21 @@ export default function ClimaPage() {
                 Clima en {location.name}, {location.country}
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-2 text-center text-lg">
-              <p><strong>Temperatura:</strong> {weather.temperature}°C</p>
-              <p><strong>Viento:</strong> {weather.windspeed} km/h</p>
-              <p><strong>Código clima:</strong> {weather.weathercode}</p>
+          <CardContent className="space-y-2 text-center text-lg">
+              <p className="flex items-center justify-center gap-2">
+                <ThermometerSun className="w-5 h-5 text-orange-500" />
+                <strong>Temperatura:</strong> {weather.temperature}°C
+              </p>
+              <p className="flex items-center justify-center gap-2">
+                <Wind className="w-5 h-5 text-blue-500" />
+                <strong>Viento:</strong> {weather.windspeed} km/h
+              </p>
+              <p className="flex items-center justify-center gap-2">
+                <CloudSun className="w-5 h-5 text-gray-500" />
+                <strong>Código clima:</strong> {weather.weathercode}
+              </p>
             </CardContent>
+
           </Card>
         )}
       </div>

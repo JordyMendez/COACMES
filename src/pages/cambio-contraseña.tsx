@@ -37,7 +37,7 @@ export default function ChangePasswordPage() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 px-98">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-indigo-50 to-violet-900 p-6 px-98">
       <div className="max-w-md w-full p-6 bg-white rounded-md shadow-md px-20">
         <h2 className="text-2xl font-semibold mb-6 text-center">
           Cambiar Contraseña

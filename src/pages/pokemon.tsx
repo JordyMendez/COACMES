@@ -30,7 +30,7 @@ export default function PokemonPage() {
   }
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-purple-900 via-black to-gray-900 px-86 py-10">
+    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-purple-900 via-black to-gray-900 px-100 py-10 ">
       <div className="w-full max-w-md">
         <Card>
           <CardHeader>
@@ -84,7 +84,7 @@ export default function PokemonPage() {
                   <img
                     src={pokemon.sprites.front_default}
                     alt={pokemon.name}
-                    className="w-40 h-40 object-contain "
+                    className="w-40 h-40 object-contain caret-amber-300 "
                   />
                   <div className="flex gap-2 flex-wrap justify-cente">
                     <Tag className="w-5 h-5" />

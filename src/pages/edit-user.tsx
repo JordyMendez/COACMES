@@ -47,7 +47,7 @@ export default function ChangeUsernameForm() {
   };
 
   return (
-    <div className="flex justify-center items-center w-full min-h-screen bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 px-98">
+    <div className="flex justify-center items-center w-full min-h-screen bg-gradient-to-br from-indigo-50 to-violet-900 p-6 px-98">
       <Card className="w-full max-w-md shadow-lg px-20">
         <CardHeader>
           <CardTitle className="text-2xl text-center">

@@ -18,6 +18,8 @@ import {
   UserPen,
   LogOut,
   Bone,
+  SquareChevronRight,
+  Circle,
 } from "lucide-react"
 
 import { useState } from "react"
@@ -65,9 +67,8 @@ export default function SidebarMenuComponent() {
       action: {
         label: "Sí, salir",
         onClick: () => {
-          // store.setState({ isAuthenticated: false, username: "" });
+          // Lógica de cierre de sesión real
           toast.success("Sesión cerrada exitosamente.")
-          // router.navigate({ to: "/login" })
         },
       },
       cancel: {
@@ -83,9 +84,9 @@ export default function SidebarMenuComponent() {
       <SidebarHeader>
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="p-2 text-xs text-gray-600 hover:text-black"
+          className="p-2 text-gray-600 hover:text-black transition"
         >
-          {isCollapsed ? "➡️" : "⬅️"}
+          {isCollapsed ? <Circle size={20} /> : <SquareChevronRight  size={20} />}
         </button>
       </SidebarHeader>
 

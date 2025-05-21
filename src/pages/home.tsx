@@ -6,7 +6,7 @@ export default function HomePage() {
   const { usuario} = useStore(usuarioStore)
 
   return (
-    <div className="flex justify-center items-center w-full min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-6 px-50">
+    <div className="flex justify-center items-center w-full min-h-screen bg-gradient-to-br from-blue-50 to-violet-800 p-6 px-50">
       <Card className="w-full max-w-2xl text-center shadow-xl px-50">
         <CardHeader>
           <CardTitle className="text-3xl font-bold">
