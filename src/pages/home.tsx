@@ -1,9 +1,9 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { useStore } from "@tanstack/react-store"
-import { usuarioStore } from "@/store/auhtStore"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useStore } from "@tanstack/react-store";
+import { usuarioStore } from "@/store/auhtStore";
 
 export default function HomePage() {
-  const { usuario} = useStore(usuarioStore)
+  const { usuario } = useStore(usuarioStore);
 
   return (
     <div className="flex justify-center items-center w-full min-h-screen bg-gradient-to-br from-blue-50 to-violet-800 p-6 px-50">
@@ -24,5 +24,5 @@ export default function HomePage() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

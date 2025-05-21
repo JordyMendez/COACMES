@@ -8,7 +8,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 import {
   Cat,
@@ -20,47 +20,47 @@ import {
   Bone,
   SquareChevronRight,
   Circle,
-} from "lucide-react"
+} from "lucide-react";
 
-import { useState } from "react"
-import { Link } from "@tanstack/react-router"
-import { toast } from "sonner"
+import { useState } from "react";
+import { Link } from "@tanstack/react-router";
+import { toast } from "sonner";
 
 const items = [
   {
     title: "Home",
-    to: '/home',
+    to: "/home",
     icon: Home,
   },
   {
     title: "Clima",
-    to: '/clima',
+    to: "/clima",
     icon: CloudSunRain,
   },
   {
     title: "Pokemon",
-    to: '/pokemon',
+    to: "/pokemon",
     icon: Cat,
   },
   {
     title: "Cambio de contraseña",
-    to: '/ChangePassword',
+    to: "/ChangePassword",
     icon: ClipboardPenIcon,
   },
   {
     title: "Cambio nombre de usuario",
-    to: '/EditUser',
+    to: "/EditUser",
     icon: UserPen,
   },
   {
     title: "Skeleton",
-    to: '/skeleton',
+    to: "/skeleton",
     icon: Bone,
   },
-]
+];
 
 export default function SidebarMenuComponent() {
-  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const handleLogout = () => {
     toast("¿Estás seguro de que quieres cerrar sesión?", {
@@ -68,7 +68,7 @@ export default function SidebarMenuComponent() {
         label: "Sí, salir",
         onClick: () => {
           // Lógica de cierre de sesión real
-          toast.success("Sesión cerrada exitosamente.")
+          toast.success("Sesión cerrada exitosamente.");
         },
       },
       cancel: {
@@ -76,17 +76,23 @@ export default function SidebarMenuComponent() {
         onClick: () => toast.info("Cancelado"),
       },
       duration: 8000,
-    })
-  }
+    });
+  };
 
   return (
-    <Sidebar className={`${isCollapsed ? 'w-[60px]' : 'w-[250px]'} transition-all duration-300`}>
+    <Sidebar
+      className={`${isCollapsed ? "w-[60px]" : "w-[250px]"} transition-all duration-300`}
+    >
       <SidebarHeader>
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
           className="p-2 text-gray-600 hover:text-black transition"
         >
-          {isCollapsed ? <Circle size={20} /> : <SquareChevronRight  size={20} />}
+          {isCollapsed ? (
+            <Circle size={20} />
+          ) : (
+            <SquareChevronRight size={20} />
+          )}
         </button>
       </SidebarHeader>
 
@@ -123,5 +129,5 @@ export default function SidebarMenuComponent() {
         </SidebarFooter>
       )}
     </Sidebar>
-  )
+  );
 }

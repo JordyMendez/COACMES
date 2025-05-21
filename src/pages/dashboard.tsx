@@ -1,6 +1,6 @@
-import SidebarMenuComponent from "@/pages/sedebarmenu"
-import { SidebarProvider } from "@/components/ui/sidebar"
-import { Outlet } from "@tanstack/react-router"
+import SidebarMenuComponent from "@/pages/sedebarmenu";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { Outlet } from "@tanstack/react-router";
 
 export default function SidebarLayout() {
   return (
@@ -8,5 +8,5 @@ export default function SidebarLayout() {
       <SidebarMenuComponent />
       <Outlet />
     </SidebarProvider>
-  )
+  );
 }

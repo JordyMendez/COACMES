@@ -8,7 +8,7 @@ export interface Pokemon {
     type: {
       name: string
     }
-  }[]
+  }[] 
 }
 
 export async function getPokemonByNameOrId(nameOrId: string): Promise<Pokemon> {

@@ -1,14 +1,14 @@
-import { useState } from "react"
-import { useQuery } from "@tanstack/react-query"
-import { getPokemonByNameOrId } from "@/consumo -de-apis/poke-api"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import { Loader2, Search, Tag } from "lucide-react" // Iconos añadidos
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getPokemonByNameOrId } from "@/consumo -de-apis/poke-api";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Loader2, Search, Tag } from "lucide-react"; // Iconos añadidos
 
 export default function PokemonPage() {
-  const [query, setQuery] = useState("")
-  const [search, setSearch] = useState("")
+  const [query, setQuery] = useState("");
+  const [search, setSearch] = useState("");
 
   const {
     data: pokemon,
@@ -20,17 +20,17 @@ export default function PokemonPage() {
     queryKey: ["pokemon", search],
     queryFn: () => getPokemonByNameOrId(search),
     enabled: false, // evitar auto-fetch
-  })
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!query.trim()) return
-    setSearch(query.toLowerCase())
-    await refetch()
-  }
+    e.preventDefault();
+    if (!query.trim()) return;
+    setSearch(query.toLowerCase());
+    await refetch();
+  };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-purple-900 via-black to-gray-900 px-100 py-10 ">
+    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-indigo-50 to-violet-900 px-100 py-10 ">
       <div className="w-full max-w-md">
         <Card>
           <CardHeader>
@@ -48,23 +48,23 @@ export default function PokemonPage() {
                 autoComplete="off"
               />
               <Button
-  type="submit"
-  disabled={isFetching}
-  className="flex items-center gap-2 transition-colors duration-300 disabled:cursor-wait disabled:bg-gray-500"
->
-  {isFetching ? (
-    <>
-      <Loader2 className="animate-spin w-6 h-6 text-white" />
-      <span className="sr-only">Buscando...</span> {/* accesibilidad */}
-    </>
-  ) : (
-    <>
-      <Search className="w-5 h-5" />
-      Buscar
-    </>
-  )}
-</Button>
-
+                type="submit"
+                disabled={isFetching}
+                className="flex items-center gap-2 transition-colors duration-300 disabled:cursor-wait disabled:bg-gray-500"
+              >
+                {isFetching ? (
+                  <>
+                    <Loader2 className="animate-spin w-6 h-6 text-white" />
+                    <span className="sr-only">Buscando...</span>{" "}
+                    {/* accesibilidad */}
+                  </>
+                ) : (
+                  <>
+                    <Search className="w-5 h-5" />
+                    Buscar
+                  </>
+                )}
+              </Button>
             </form>
 
             {isError && (
@@ -75,7 +75,7 @@ export default function PokemonPage() {
 
             {pokemon && (
               <Card className="mt-4 bg-white/10 shadow-lg rounded-lg border border-white/20 ">
-                <CardHeader >
+                <CardHeader>
                   <CardTitle className="capitalize text-xl text-center  from-purple-900">
                     {pokemon.name} (ID: {pokemon.id})
                   </CardTitle>
@@ -105,5 +105,5 @@ export default function PokemonPage() {
         </Card>
       </div>
     </div>
-  )
+  );
 }

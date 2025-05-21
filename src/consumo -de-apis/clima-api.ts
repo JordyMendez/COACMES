@@ -12,7 +12,7 @@ export interface Weather {
   weathercode: number
 }
 
-// Buscar coordenadas por nombre de ciudad
+
 export async function getCoordinates(city: string): Promise<Location> {
   const res = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`)
   if (!res.ok) throw new Error("No se pudo buscar la ciudad")
@@ -24,7 +24,6 @@ export async function getCoordinates(city: string): Promise<Location> {
   return { name, country, latitude, longitude }
 }
 
-// Obtener clima actual por coordenadas
 export async function getWeather(lat: number, lon: number): Promise<Weather> {
   const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
   if (!res.ok) throw new Error("No se pudo obtener el clima")

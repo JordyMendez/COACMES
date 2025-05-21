@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { changePassword } from "@/data-base/data-base"; 
-import { toast } from "sonner"; 
+import { changePassword } from "@/data-base/data-base";
+import { toast } from "sonner";
 
 export default function ChangePasswordPage() {
   const [currentPass, setCurrentPass] = useState("");
   const [newPass, setNewPass] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
 
-  const username = "usuario_actual"; 
+  const username = "usuario_actual";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -69,7 +69,9 @@ export default function ChangePasswordPage() {
           </div>
 
           <div>
-            <label className="block mb-1 font-medium">Confirmar Nueva Contraseña</label>
+            <label className="block mb-1 font-medium">
+              Confirmar Nueva Contraseña
+            </label>
             <Input
               type="password"
               value={confirmPass}

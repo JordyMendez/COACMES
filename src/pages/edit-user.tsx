@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
 import { editUserData } from "@/data-base/data-base"; // ajusta si la ruta es distinta
 
@@ -61,11 +56,7 @@ export default function ChangeUsernameForm() {
               <label className="block mb-1 font-medium">
                 Nombre de usuario actual
               </label>
-              <Input
-                type="text"
-                value={currentUsername}
-                className="text-lg"
-              />
+              <Input type="text" value={currentUsername} className="text-lg" />
             </div>
 
             <div>
