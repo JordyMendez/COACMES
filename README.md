@@ -1,54 +1,41 @@
-# React + TypeScript + Vite
+# Mi primer proyecto con React + TypeScript + Vite 💻✨
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Hola 👋  
+Este es mi primer proyecto usando **React**, **TypeScript** y **Vite**. No es perfecto, pero está hecho con mucho cariño, entusiasmo y muchas ganas de aprender. ❤️
 
-Currently, two official plugins are available:
+Decidí comenzar este camino para adentrarme en el mundo del desarrollo web moderno. Con este proyecto estoy aprendiendo no solo a trabajar con tecnologías como React y TypeScript, sino también a conectar una aplicación frontend con **varias APIs**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ¿Qué hace esta app?
 
-## Expanding the ESLint configuration
+Esta aplicación tiene varias funcionalidades que me han ayudado a practicar diferentes aspectos del desarrollo:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+🔹 **Consumo de una API propia (backend):**  
+Estoy aprendiendo a comunicar el frontend con un backend que desarrollé para manejar autenticación y otras funcionalidades.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+🔹 **Consulta a la API de Pokémon:**  
+La app se conecta con la [PokéAPI](https://pokeapi.co/) para mostrar información de distintos Pokémon. Fue muy divertido integrarla y explorar su estructura de datos.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+🔹 **Consulta a una API de clima:**  
+También se conecta con una API de clima para mostrar el estado del tiempo actual en distintas ciudades. Esto me ayudó a entender cómo trabajar con datos en tiempo real.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ¿Por qué lo hice?
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Quería un proyecto pequeño pero que me enseñe muchas cosas al mismo tiempo. Y vaya que lo ha hecho. Aprendí sobre rutas, componentes reutilizables, manejo de estado, manejo de errores, consumo de APIs, y muchas otras cosas que solo se entienden cuando uno se ensucia las manos.
+
+Este proyecto es solo el inicio. Quiero seguir creando más aplicaciones, seguir cometiendo errores (¡y aprendiendo de ellos!), y algún día mirar atrás y ver cuánto he crecido como desarrollador.
+
+---
+
+## Tecnologías utilizadas
+
+- React ⚛️  
+- TypeScript 🟦  
+- Vite ⚡  
+- TanStack Router 🔀  
+- TanStack Query 🔍  
+- APIs REST 🌐
+
+---
+
+Gracias por tomarte el tiempo de leer esto.  
+Si llegaste hasta aquí, solo puedo decir: **¡Vamos por más proyectos!** 🚀
